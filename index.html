@@ -1,238 +1,119 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #6f0ec3; -webkit-text-stroke: #6f0ec3}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #0e6e6d; -webkit-text-stroke: #0e6e6d}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #18702b; -webkit-text-stroke: #18702b}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; -webkit-text-stroke: #000000; min-height: 16.0px}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #4d5055; -webkit-text-stroke: #4d5055}
-    span.s1 {font-kerning: none; color: #6f0ec3; background-color: #ecf1f7; -webkit-text-stroke: 0px #6f0ec3}
-    span.s2 {font-kerning: none; background-color: #ecf1f7}
-    span.s3 {font-kerning: none; color: #0e6e6d; background-color: #ecf1f7; -webkit-text-stroke: 0px #0e6e6d}
-    span.s4 {font-kerning: none; color: #18702b; background-color: #ecf1f7; -webkit-text-stroke: 0px #18702b}
-    span.s5 {font-kerning: none; color: #000000; background-color: #ecf1f7; -webkit-text-stroke: 0px #000000}
-    span.s6 {font-kerning: none}
-    span.s7 {font-kerning: none; color: #bf1c25; background-color: #ecf1f7; -webkit-text-stroke: 0px #bf1c25}
-    span.s8 {font-kerning: none; color: #a4450b; background-color: #ecf1f7; -webkit-text-stroke: 0px #a4450b}
-    span.s9 {font-kerning: none; color: #4d5055; background-color: #ecf1f7; -webkit-text-stroke: 0px #4d5055}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>美工区作品欣赏库</title>
+    <script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body { font-family: -apple-system, system-ui, sans-serif; background-color: #f8fafc; }
+        .sticky-top { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); }
+    </style>
 </head>
 <body>
-<p class="p1"><span class="s1">import</span><span class="s2"> </span><span class="s3">React</span><span class="s2">, { useState, useMemo } </span><span class="s1">from</span><span class="s2"> </span><span class="s4">'react'</span><span class="s2">;</span></p>
-<p class="p2"><span class="s2">import</span><span class="s5"> {<span class="Apple-converted-space"> </span></span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">  </span></span><span class="s2">Search</span><span class="s5">, </span><span class="s2">Eye</span><span class="s5">, </span><span class="s2">Heart</span><span class="s5">, </span><span class="s2">CloudLightning</span><span class="s5">, </span><span class="s2">BookOpen</span><span class="s5">,<span class="Apple-converted-space"> </span></span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">  </span></span><span class="s2">ChevronRight</span><span class="s5">, </span><span class="s2">Calendar</span><span class="s5">, </span><span class="s2">User</span><span class="s5">, </span><span class="s2">Info</span><span class="s5">, </span><span class="s2">Image</span><span class="s5"> </span><span class="s1">as</span><span class="s5"> </span><span class="s2">ImageIcon</span></p>
-<p class="p4"><span class="s5">} </span><span class="s1">from</span><span class="s5"> </span><span class="s2">'lucide-react'</span><span class="s5">;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s1">const</span><span class="s2"> </span><span class="s3">App</span><span class="s2"> = () =&gt; {</span></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">  </span></span><span class="s2">// --- 状态管理 ---</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> [grade, setGrade] = useState(</span><span class="s4">'小班'</span><span class="s2">);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> [semester, setSemester] = useState(</span><span class="s4">'上学期'</span><span class="s2">);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> [dimension, setDimension] = useState(</span><span class="s4">'审美感知'</span><span class="s2">);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> [searchTerm, setSearchTerm] = useState(</span><span class="s4">''</span><span class="s2">);</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">  </span></span><span class="s2">// --- 核心数据库 (由何老师的Word文档转化而来) ---</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> database = [</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>{</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>grade: </span><span class="s4">'小班'</span><span class="s2">,</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>semester: </span><span class="s4">'上学期'</span><span class="s2">,</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>dimension: </span><span class="s4">'审美感知'</span><span class="s2">,</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>category: </span><span class="s4">'西洋画'</span><span class="s2">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>title: </span><span class="s2">'太阳 / 天空中蓝色的金子'</span><span class="s5">,</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>author: </span><span class="s4">'胡安·米罗'</span><span class="s2">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>experience: </span><span class="s2">'辨认颜色名称，说出不同颜色；欣赏鲜明色彩和简单造型。'</span><span class="s5">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>guide: [</span><span class="s2">'你看画里用了哪些颜色？'</span><span class="s5">, </span><span class="s2">'这些线条像什么？'</span><span class="s5">, </span><span class="s2">'哪个形状像太阳？'</span><span class="s5">],</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>feedback: </span><span class="s2">'“老师，那个黄色的圆圆的像我吃的蛋黄！”'</span><span class="s5">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>img: </span><span class="s2">'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&amp;w=500'</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>},</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>{</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>grade: </span><span class="s4">'小班'</span><span class="s2">,</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>semester: </span><span class="s4">'上学期'</span><span class="s2">,</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>dimension: </span><span class="s4">'审美想象'</span><span class="s2">,</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>category: </span><span class="s4">'中国画'</span><span class="s2">,</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>title: </span><span class="s4">'虾'</span><span class="s2">,</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>author: </span><span class="s4">'齐白石'</span><span class="s2">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>experience: </span><span class="s2">'形象动态：感受虾在水里游动的样子，体会线条的飘逸。'</span><span class="s5">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>guide: [</span><span class="s2">'小虾在水里做什么呢？'</span><span class="s5">, </span><span class="s2">'它们的胡须长不长？'</span><span class="s5">, </span><span class="s2">'学一学小虾弯弯腰的样子。'</span><span class="s5">],</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>feedback: </span><span class="s2">'“这只虾长了好长的胡子，像老爷爷。”'</span><span class="s5">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>img: </span><span class="s2">'https://images.unsplash.com/photo-1594122230689-45899d9e6f69?q=80&amp;w=500'</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>},</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>{</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>grade: </span><span class="s4">'小班'</span><span class="s2">,</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>semester: </span><span class="s4">'下学期'</span><span class="s2">,</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>dimension: </span><span class="s4">'审美情感'</span><span class="s2">,</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>category: </span><span class="s4">'民间美术'</span><span class="s2">,</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>title: </span><span class="s4">'过大年 (年画)'</span><span class="s2">,</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>author: </span><span class="s4">'传统艺术'</span><span class="s2">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>experience: </span><span class="s2">'体验欢快、热闹的情感；愿意分享过年的喜悦。'</span><span class="s5">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>guide: [</span><span class="s2">'看到这幅画你觉得开心吗？'</span><span class="s5">, </span><span class="s2">'画里的小朋友在做什么？'</span><span class="s5">, </span><span class="s2">'你想和谁一起过年？'</span><span class="s5">],</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>feedback: </span><span class="s4">'“我也想要那个红红的大灯笼！”'</span><span class="s2">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>img: </span><span class="s2">'https://images.unsplash.com/photo-1612151855475-877969f4e6cc?q=80&amp;w=500'</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>},</span></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">// 后续可以继续添加中班、大班的数据...</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>];</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">  </span></span><span class="s2">// --- 过滤逻辑 ---</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> filteredWorks = useMemo(() =&gt; {</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s1">return</span><span class="s2"> database.filter(item =&gt;<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>item.grade === grade &amp;&amp;<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>item.semester === semester &amp;&amp;<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>item.dimension === dimension &amp;&amp;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>(item.title.includes(searchTerm) || item.author.includes(searchTerm))</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>}, [grade, semester, dimension, searchTerm]);</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">  </span></span><span class="s2">return</span><span class="s5"> (</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span>&lt;div className=</span><span class="s2">"flex flex-col h-screen bg-slate-50 max-w-md mx-auto overflow-hidden shadow-2xl font-sans"</span><span class="s5">&gt;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">      </span></span></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">      </span>{</span><span class="s2">/* 顶部固定导航 (年级 + 学期) */</span><span class="s5">}</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>&lt;div className=</span><span class="s2">"bg-white z-50 border-b border-slate-100 shadow-sm"</span><span class="s5">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">        </span>&lt;div className=</span><span class="s2">"px-5 pt-4 pb-3 flex justify-between items-center"</span><span class="s5">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">          </span>&lt;h1 className=</span><span class="s2">"text-lg font-black text-slate-800 tracking-tighter"</span><span class="s5">&gt;</span><span class="s7">美育提质资源库</span><span class="s5">&lt;/h1&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">          </span>&lt;div className=</span><span class="s2">"flex bg-slate-100 p-1 rounded-lg"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>{[</span><span class="s4">'上学期'</span><span class="s2">, </span><span class="s4">'下学期'</span><span class="s2">].map(s =&gt; (</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span>&lt;button<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                </span>key={s} onClick={() =&gt; setSemester(s)}</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">                </span>className={</span><span class="s2">`px-3 py-1 text-[10px] font-bold rounded-md transition-all </span><span class="s5">${semester === s ? </span><span class="s2">'bg-white text-emerald-600 shadow-sm'</span><span class="s5"> : </span><span class="s2">'text-slate-400'</span><span class="s5">}</span><span class="s2">`</span><span class="s5">}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span>&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                </span>{s}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>))}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">        </span>{</span><span class="s2">/* 年级滑动切换 */</span><span class="s5">}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;div className=</span><span class="s4">"px-5 pb-3 flex gap-2"</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>{[</span><span class="s4">'小班'</span><span class="s2">, </span><span class="s4">'中班'</span><span class="s2">, </span><span class="s4">'大班'</span><span class="s2">].map(g =&gt; (</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;button<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span>key={g} onClick={() =&gt; setGrade(g)}</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">              </span>className={</span><span class="s2">`flex-1 py-2 text-xs font-bold rounded-xl border-2 transition-all </span><span class="s5">${grade === g ? </span><span class="s2">'border-emerald-500 bg-emerald-50 text-emerald-700'</span><span class="s5"> : </span><span class="s2">'border-slate-100 bg-slate-50 text-slate-400'</span><span class="s5">}</span><span class="s2">`</span><span class="s5">}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span>{g}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>))}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">      </span>{</span><span class="s2">/* 主滚动区 */</span><span class="s5">}</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>&lt;div className=</span><span class="s2">"flex-1 overflow-y-auto no-scrollbar pb-24"</span><span class="s5">&gt;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">        </span>{</span><span class="s2">/* 维度导航 (吸顶) */</span><span class="s5">}</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">        </span>&lt;div className=</span><span class="s2">"sticky top-0 z-40 bg-white/80 backdrop-blur-md px-5 py-3 flex gap-2 border-b border-slate-50 overflow-x-auto no-scrollbar"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>{[</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>{ n: </span><span class="s4">'审美感知'</span><span class="s2">, i: &lt;</span><span class="s3">Eye</span><span class="s2"> size={</span><span class="s8">14</span><span class="s2">}/&gt;, c: </span><span class="s4">'blue'</span><span class="s2"> },</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>{ n: </span><span class="s4">'审美想象'</span><span class="s2">, i: &lt;</span><span class="s3">CloudLightning</span><span class="s2"> size={</span><span class="s8">14</span><span class="s2">}/&gt;, c: </span><span class="s4">'purple'</span><span class="s2"> },</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>{ n: </span><span class="s4">'审美情感'</span><span class="s2">, i: &lt;</span><span class="s3">Heart</span><span class="s2"> size={</span><span class="s8">14</span><span class="s2">}/&gt;, c: </span><span class="s4">'pink'</span><span class="s2"> }</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>].map(d =&gt; (</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;button<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span>key={d.n} onClick={() =&gt; setDimension(d.n)}</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">              </span>className={</span><span class="s2">`flex items-center gap-2 px-4 py-2 rounded-2xl whitespace-nowrap border-2 transition-all </span><span class="s5">${dimension === d.n ? </span><span class="s2">`border-</span><span class="s5">${d.c}</span><span class="s2">-400 bg-</span><span class="s5">${d.c}</span><span class="s2">-500 text-white font-bold shadow-lg shadow-</span><span class="s5">${d.c}</span><span class="s2">-100`</span><span class="s5"> : </span><span class="s2">'border-slate-100 bg-white text-slate-400'</span><span class="s5">}</span><span class="s2">`</span><span class="s5">}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span>{d.i} &lt;span className=</span><span class="s4">"text-xs"</span><span class="s2">&gt;{d.n}&lt;/span&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>))}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>{</span><span class="s9">/* 搜索框 */</span><span class="s2">}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;div className=</span><span class="s4">"px-5 mt-4"</span><span class="s2">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">          </span>&lt;div className=</span><span class="s2">"bg-white border border-slate-200 rounded-2xl flex items-center px-4 py-2.5 gap-3 focus-within:border-emerald-400 transition-all shadow-sm"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;</span><span class="s3">Search</span><span class="s2"> size={</span><span class="s8">16</span><span class="s2">} className=</span><span class="s4">"text-slate-300"</span><span class="s2"> /&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;input<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span></span><span class="s1">type</span><span class="s2">=</span><span class="s4">"text"</span><span class="s2"><span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span>placeholder=</span><span class="s4">"搜索名画、作者或关键词..."</span><span class="s2"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">              </span>className=</span><span class="s2">"bg-transparent text-sm w-full outline-none text-slate-600"</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span>value={searchTerm}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span>onChange={(e) =&gt; setSearchTerm(e.target.value)}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>/&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>{</span><span class="s9">/* 作品展示 */</span><span class="s2">}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;div className=</span><span class="s4">"p-5 space-y-6"</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>{filteredWorks.length &gt; </span><span class="s8">0</span><span class="s2"> ? filteredWorks.map(work =&gt; (</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">            </span>&lt;div key={work.id} className=</span><span class="s2">"bg-white rounded-[32px] overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition-shadow"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span>&lt;div className=</span><span class="s4">"relative group"</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                </span>&lt;img src={work.img} className=</span><span class="s4">"w-full h-52 object-cover"</span><span class="s2"> alt={work.title} /&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">                </span>&lt;div className=</span><span class="s2">"absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black text-slate-700 uppercase tracking-widest shadow-sm"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>{work.category}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span>&lt;div className=</span><span class="s4">"p-6"</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                </span>&lt;div className=</span><span class="s4">"mb-5"</span><span class="s2">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">                  </span>&lt;h2 className=</span><span class="s2">"text-xl font-black text-slate-800 mb-1 leading-tight tracking-tight"</span><span class="s5">&gt;</span><span class="s7">《</span><span class="s5">{work.title}</span><span class="s7">》</span><span class="s5">&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>&lt;p className=</span><span class="s4">"text-slate-400 text-xs font-medium"</span><span class="s2">&gt;{work.author}&lt;/p&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                </span>&lt;div className=</span><span class="s4">"space-y-4"</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>{</span><span class="s9">/* 核心经验 */</span><span class="s2">}</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">                  </span>&lt;div className=</span><span class="s2">"bg-slate-50 p-4 rounded-2xl flex gap-3 items-start"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                    </span>&lt;div className=</span><span class="s4">"mt-1"</span><span class="s2">&gt;&lt;</span><span class="s3">Info</span><span class="s2"> size={</span><span class="s8">14</span><span class="s2">} className=</span><span class="s4">"text-emerald-500"</span><span class="s2"> /&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                    </span>&lt;div&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">                      </span>&lt;p className=</span><span class="s2">"text-[10px] font-bold text-slate-400 uppercase tracking-tighter mb-1"</span><span class="s5">&gt;</span><span class="s7">关键经验细则</span><span class="s5">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                      </span>&lt;p className=</span><span class="s4">"text-xs text-slate-700 leading-relaxed font-medium"</span><span class="s2">&gt;{work.experience}&lt;/p&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>{</span><span class="s9">/* 引导脚本 */</span><span class="s2">}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>&lt;div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                    </span>&lt;div className=</span><span class="s4">"flex items-center gap-2 mb-2"</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                      </span>&lt;div className=</span><span class="s4">"w-1.5 h-1.5 bg-blue-500 rounded-full"</span><span class="s2">&gt;&lt;/div&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">                      </span>&lt;span className=</span><span class="s2">"text-xs font-black text-slate-700 uppercase tracking-widest"</span><span class="s5">&gt;</span><span class="s7">教师引导语言</span><span class="s5">&lt;/span&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                    </span>&lt;div className=</span><span class="s4">"grid gap-2"</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                      </span>{work.guide.map((g, i) =&gt; (</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">                        </span>&lt;div key={i} className=</span><span class="s2">"text-[11px] text-slate-600 bg-blue-50/30 px-3 py-2 rounded-xl border border-blue-50"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                          </span>{g}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                      </span>))}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>{</span><span class="s9">/* 幼儿反馈 */</span><span class="s2">}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>&lt;div className=</span><span class="s4">"pt-4 border-t border-slate-50"</span><span class="s2">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">                    </span>&lt;div className=</span><span class="s2">"flex items-center gap-2 mb-2 text-orange-500"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                      </span>&lt;</span><span class="s3">User</span><span class="s2"> size={</span><span class="s8">12</span><span class="s2">} /&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">                      </span>&lt;span className=</span><span class="s2">"text-[10px] font-bold uppercase tracking-widest"</span><span class="s5">&gt;</span><span class="s7">幼儿反馈记录</span><span class="s5">&lt;/span&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">                    </span>&lt;p className=</span><span class="s2">"text-[11px] text-slate-400 italic font-medium leading-relaxed bg-orange-50/30 p-3 rounded-xl border border-orange-50/50"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                      </span>{work.feedback}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                    </span>&lt;/p&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>)) : (</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">            </span>&lt;div className=</span><span class="s2">"text-center py-20 text-slate-300"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span>&lt;</span><span class="s3">ImageIcon</span><span class="s2"> size={</span><span class="s8">48</span><span class="s2">} className=</span><span class="s4">"mx-auto mb-4 opacity-20"</span><span class="s2"> /&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span>&lt;p className=</span><span class="s4">"text-sm font-medium tracking-tight"</span><span class="s2">&gt;</span><span class="s7">该分类下暂无作品</span><span class="s2">&lt;br/&gt;</span><span class="s7">点击左上角切换试试看</span><span class="s2">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>)}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">      </span>{</span><span class="s2">/* 底部功能栏 */</span><span class="s5">}</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>&lt;div className=</span><span class="s2">"absolute bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 px-8 py-3 rounded-full flex items-center gap-8 shadow-2xl shadow-slate-400 border border-slate-800"</span><span class="s5">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">        </span>&lt;button className=</span><span class="s2">"text-emerald-400 flex flex-col items-center"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>&lt;</span><span class="s3">BookOpen</span><span class="s2"> size={</span><span class="s8">18</span><span class="s2">} /&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>&lt;span className=</span><span class="s4">"text-[8px] font-bold mt-1"</span><span class="s2">&gt;</span><span class="s7">资源库</span><span class="s2">&lt;/span&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;/button&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">        </span>&lt;button className=</span><span class="s2">"text-slate-500 flex flex-col items-center"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>&lt;</span><span class="s3">User</span><span class="s2"> size={</span><span class="s8">18</span><span class="s2">} /&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>&lt;span className=</span><span class="s4">"text-[8px] font-bold mt-1"</span><span class="s2">&gt;</span><span class="s7">我的</span><span class="s2">&lt;/span&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>);</span></p>
-<p class="p1"><span class="s2">};</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p2"><span class="s2">export</span><span class="s5"> </span><span class="s2">default</span><span class="s5"> </span><span class="s3">App</span><span class="s5">;</span></p>
+    <div id="app" class="max-w-md mx-auto min-h-screen flex flex-col relative">
+        
+        <div class="bg-white px-4 pt-4 pb-2 border-b border-slate-50">
+            <div class="flex bg-slate-100 p-1 rounded-xl mb-3">
+                <button v-for="g in ['小班', '中班', '大班']" :key="g"
+                    @click="activeGrade = g"
+                    :class="['flex-1 py-1.5 text-xs font-bold rounded-lg transition-all', activeGrade === g ? 'bg-white text-emerald-600 shadow-sm' : 'text-slate-400']">
+                    {{g}}
+                </button>
+            </div>
+            <div class="flex items-center justify-between">
+                <div class="flex gap-4">
+                    <button v-for="s in ['上学期', '下学期']" :key="s"
+                        @click="activeSemester = s"
+                        :class="['text-sm font-bold flex items-center transition-colors', activeSemester === s ? 'text-slate-800' : 'text-slate-300']">
+                        {{s}}<div v-if="activeSemester === s" class="w-1 h-1 bg-emerald-500 rounded-full ml-1"></div>
+                    </button>
+                </div>
+                <div class="bg-slate-100 p-1.5 rounded-full text-slate-400"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></div>
+            </div>
+        </div>
+
+        <div class="sticky-top border-b border-slate-100 px-4 py-2.5 flex gap-2 overflow-x-auto no-scrollbar">
+            <button v-for="d in dimensions" :key="d.name"
+                @click="activeDimension = d.name"
+                :class="['flex items-center gap-2 px-4 py-1.5 rounded-xl whitespace-nowrap border transition-all text-xs font-bold', 
+                         activeDimension === d.name ? `bg-${d.color}-500 border-${d.color}-500 text-white shadow-md` : 'bg-white border-slate-100 text-slate-400']">
+                {{d.name}}
+            </button>
+        </div>
+
+        <div class="flex-1 p-4 space-y-4 pb-24">
+            <div v-for="work in filteredWorks" :key="work.title" class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm">
+                <img :src="work.img" class="w-full h-40 object-cover">
+                <div class="p-4">
+                    <h3 class="text-base font-black text-slate-800 mb-2 tracking-tight">《{{work.title}}》- {{work.author}}</h3>
+                    <div class="mb-3 bg-emerald-50 p-2.5 rounded-xl border-l-2 border-emerald-400">
+                        <p class="text-[10px] text-emerald-800 leading-relaxed font-medium">{{work.experience}}</p>
+                    </div>
+                    <div class="space-y-1">
+                        <div v-for="(g, i) in work.guide" :key="i" class="text-[11px] text-slate-500 pl-2 border-l border-slate-200 py-0.5">{{g}}</div>
+                    </div>
+                    <div v-if="work.feedback" class="mt-3 pt-3 border-t border-slate-50 text-[10px] text-orange-400 italic">“{{work.feedback}}”</div>
+                </div>
+            </div>
+            <div v-if="filteredWorks.length === 0" class="text-center py-20 text-slate-300 text-xs">该维度暂无内容，请切换试试</div>
+        </div>
+
+        <div class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-slate-100 py-2 flex justify-around items-center px-10">
+            <div class="flex flex-col items-center gap-0.5 text-emerald-600">
+                <div class="w-5 h-5 bg-emerald-500 rounded-md"></div>
+                <span class="text-[8px] font-bold">资源库</span>
+            </div>
+            <div class="w-10 h-10 bg-emerald-500 rounded-full -mt-8 border-4 border-white shadow-lg text-white flex items-center justify-center font-bold text-xl">+</div>
+            <div class="flex flex-col items-center gap-0.5 text-slate-300">
+                <div class="w-5 h-5 bg-slate-200 rounded-md"></div>
+                <span class="text-[8px] font-bold">我的</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref, computed } = Vue;
+        createApp({
+            setup() {
+                const activeGrade = ref('小班');
+                const activeSemester = ref('上学期');
+                const activeDimension = ref('审美感知');
+                const dimensions = [{name:'审美感知',color:'blue'},{name:'审美想象',color:'purple'},{name:'审美情感',color:'pink'}];
+                
+                const database = ref([
+                    {
+                        grade: '小班', semester: '上学期', dimension: '审美感知', category: '西洋画',
+                        title: '太阳', author: '胡安·米罗',
+                        experience: '辨认颜色名称，说出不同颜色；欣赏鲜明色彩和简单造型。',
+                        guide: ['你看画里用了哪些颜色？', '线条像什么？', '哪个形状像太阳？'],
+                        feedback: '老师，那个黄黄的像蛋黄！',
+                        img: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=400'
+                    },
+                    {
+                        grade: '小班', semester: '上学期', dimension: '审美想象', category: '中国画',
+                        title: '虾', author: '齐白石',
+                        experience: '形象动态：感受虾在水里游动的样子，体会线条的飘逸。',
+                        guide: ['小虾在水里做什么呢？', '它们的胡须长不长？'],
+                        feedback: '这只虾胡子好长，像老爷爷。',
+                        img: 'https://images.unsplash.com/photo-1594122230689-45899d9e6f69?q=80&w=400'
+                    }
+                ]);
+
+                const filteredWorks = computed(() => {
+                    return database.value.filter(item => 
+                        item.grade === activeGrade.value &&
+                        item.semester === activeSemester.value &&
+                        item.dimension === activeDimension.value
+                    );
+                });
+
+                return { activeGrade, activeSemester, activeDimension, dimensions, filteredWorks };
+            }
+        }).mount('#app');
+    </script>
 </body>
 </html>
